@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container mh-100 align-content-center">
+    <div class="row">
+        <div class="col-md-6 p-5">
+            <img src="Image\cat.jpg" class="img-fluid w-100" alt="Cat">
+        </div>
+        <div class="col-md-6 mh-100 d-flex align-items-center justify-content-center">
+            <div class="w-75 h-50 text-justify">
+                <h1>Welcome to the Cat Fact Page! Discover amazing facts about them below.</h1>
+                @if (Model.apiResult.Success == true)
+                {
+                    <p class="card-text" style="padding-top: 20px;">@Html.Raw(@Model.apiResult.CatFactDto.Fact)</p>
+                }
+                <div class="d-flex flex-column">
+                    <form method="get" style="padding-bottom: 20px;">
+                        <button type="submit" class="btn btn-dark p-2">Get New Fact</button>
+                    </form>
+                    <div class="alert alert-warning" style="width: 20rem;" ; id="alertMessage">
+                        @Model.apiResult.Message
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
